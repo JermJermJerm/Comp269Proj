@@ -2,58 +2,59 @@
 
 <head>
 	<!-- CSS and JS -->
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
-	
-	<div id="bigContainer">
+		<h1 id="dowhatnow">Do What Now?</h1>
+		<h2>Log in or create an account</h2>
 		
-		<h1>Log in or create an account</h1>
-		
-		<hr>
-		
-		<!--
-		Error code if there's an error with logging in
-		Use JS to check fields-> disable buttons until all fields are valid
-		-->
-		
-		<h2>Log in</h2>
-		<form action="login.php" method="post">
-			<label>Username</label>
-			<input type="text" id="userName" maxlength="20" >
+		<div id="bigContainer">
 			
-			<label>Password<span class="required">*</span>:</label>
-			<input type="text" id="password" maxlength="32">
+			<!--
+			Error code if there's an error with logging in
+			Use JS to check fields-> disable buttons until all fields are valid
+			-->
 			
-			<input type="Submit" value="Log in" disabled>
-		</form>
-		
-		<h2>Create an account</h2>
-		<form action="account_create.php" method="post">
-		
-			<label>Username<span class="required">*</span>:</label>
-			<input type="text" id="userName" maxlength="20" name="userName" >
+			<h3>Log in</h3>
+			<form action="login.php" method="post" id="logInForm">
+				<label>Username</label>
+				<input type="text" id="userName" maxlength="20" >
+				
+				<label>Password<span class="required">*</span>:</label>
+				<input type="text" id="password" maxlength="32">
+				
+				<input type="Submit" value="Log in" class="submitButton">
+			</form>
 			<br>
-			<label>First Name<span class="required">*</span>:</label>
-			<input type="text" id="firstname" maxlength="20" name="firstname">
+			<hr>
 			<br>
-			<label>Middle Name:</label>
-			<input type="text" id="middleName" maxlength="20" name="middlename">
-			<br>
-			<label>Last Name<span class="required">*</span>:</label>
-			<input type="text" id="lastName" maxlength="20" name="lastname">
-			<br>
-			<label>Password<span class="required">*</span>:</label>
-			<input type="text" id="password" maxlength="32" name="password">
-			<br>
-			<label>Email Address<span class="required">*</span>:</label>
-			<input type="text" id="email" maxlength="32" name="email">
-			<br>
-			<input type="submit" value="Create account" disabled>
+			<h3>Create an account</h3>
+			<form action="account_create.php" method="post" id="createAccountForm">
 			
-		</form>
-		
-	</div>
+				<label>Username<span class="required">*</span>:</label>
+				<input type="text" id="userName" maxlength="20" name="userName" >
+				<br>
+				<label>First Name<span class="required">*</span>:</label>
+				<input type="text" id="firstname" maxlength="20" name="firstname">
+				<br>
+				<label>Middle Name:</label>
+				<input type="text" id="middleName" maxlength="20" name="middlename">
+				<br>
+				<label>Last Name<span class="required">*</span>:</label>
+				<input type="text" id="lastName" maxlength="20" name="lastname">
+				<br>
+				<label>Password<span class="required">*</span>:</label>
+				<input type="text" id="password" maxlength="32" name="password">
+				<br>
+				<label>Email Address<span class="required">*</span>:</label>
+				<input type="text" id="email" maxlength="32" name="email">
+				<br>
+				<input type="submit" value="Create account" class="submitButton">
+				
+			</form>
+			
+		</div>
 </body>
 
 </html>

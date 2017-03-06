@@ -1,0 +1,42 @@
+.projectUL{
+	width: 500px;
+	margin: 0 auto;
+	display: block;
+	border: 1px white solid;
+}
+
+.projectTitle{
+	list-style: none;
+	color: #2ecc71;
+	font-size: 32px;
+}
+.projectDescription{
+	list-style: none;
+	color: #ecf0f1;
+}
+
+.taskLi{
+	list-style: none;
+	
+}
+
+.task{
+	border: 3px black solid;
+	background-color: #ecf0f1;
+}
+
+.step{
+	border: 3px green solid;
+	background-color: pink;
+}
+
+.complete{
+	background-color: #1abc9c;
+}
+
+.incomplete{
+	background-color: #e74c3c;
+}
+.inprogress{
+	background-color: #f39c12;
+}

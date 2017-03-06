@@ -1,32 +1,61 @@
 <html>
 
 <head>
-
+	<!-- CSS and JS -->
+	<link href="main.css" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
+	
+	
+	<div class="topBanner">
+		<p>Do What Now? 2017 by Jeremy Comeo</p>
+	</div>
+	
+	<ul class="navUL">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Settings</a></li>
+		<li><a href="#">Projects</a></li>
+		<li><a href="#">Teams</a></li>
+		<li><a href="#" >Sign out</a></li>
+	</ul>
+	<br> 
 
+	<h1>Projects</h1>
+	
 	<!--Projects will be unordered lists
 		Tasks will be ordered
 		Steps will only be ordered if there's more than one step
 	-->
-
-	<div id="ProjectDiv">
-		<p>Project name</p>
-		<p>Project team</p>
-		<p>Number of team members</p>
-		<p>Creation date</p>
-		<p>deadline</p>
+	
+	<div id="projectDiv">
+		<ul class="project">
+			<li>Project name:</li>
+			<li>Project team:</li>
+			<li>Number of team members:</li>
+			<li>Creation date:</li>
+			<li>Deadline:</li>
+		</ul>
+		<ul class="project">
+			<li>Server installation #3498db</li>
+			<li>Night Crew</li>
+			<li>5 team members</li>
+			<li>Creation date: March 6, 2017</li>
+			<li>Deadline: March 11, 2017</li>
+		</ul>
 		
-	</div>
-
-	<h2>New Project:</h2>
-	<form action="CreateProject.php">
-		<label>Project Name:</label>
-		<input type="text" name="ProjectName">
-		
-		<input type="submit" value="Create Project">
-	</form>
+	</div> <!-- End of Projects container-->
+	
+	<div class="creationDiv">
+		<h2>New Project:</h2>
+		<form action="CreateProject.php" class="creationForm">
+			<label>Project Name:</label>
+			<input type="text" placeholder="Project Name" name="ProjectName">
+			
+			<input type="submit" value="Create Project">
+		</form>
+	</div> <!-- End of Projects container-->
+	
 
 </body>
 
