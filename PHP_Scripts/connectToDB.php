@@ -3,11 +3,9 @@
 	$user = 'root';
 	$pass = '';
 	
-	try {
-		$dbh = new PDO($dsn, $user, $password);
-	} catch (PDOException $e) {
-		echo 'Connection failed: ' . $e->getMessage();
-	}	
 	
+	$db = new PDO($dsn, $user, $password);
+	
+	//Use a try catch in the future to get connection success /errors
 
 ?>
