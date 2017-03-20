@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS studentsDB;
+CREATE DATABASE studentsDB;
+USE studentsDB;
+
 DROP TABLE IF EXISTS usersTable;
 DROP TABLE IF EXISTS teamsTable;
 DROP TABLE IF EXISTS membershipsTable;
