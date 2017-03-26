@@ -1,10 +1,13 @@
 <?php 
-    #Create the session and connect to our database
-    #This will allow us to stay connected to the db with one connection
-    session_start(); //Start the session so we can use session variables
-    
-    require_once('PHP_Scripts/connectToDB.php'); //Connect to our mysql db
-    
+    /*
+        #Create the session and connect to our database
+        #This will allow us to stay connected to the db with one connection
+        session_start(); //Start the session so we can use session variables
+
+        require_once('PHP_Scripts/connectToDB.php'); //Connect to our mysql db
+        We don't need to connect to a database before we have any data to get or set
+    */
+     include('PHP_Scripts/connectToDB.php');
 ?>
 
 <html>
