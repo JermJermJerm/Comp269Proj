@@ -13,7 +13,8 @@ SELECT * FROM mysql.user;
 
 GRANT SELECT, INSERT, DROP ON studentsdb.usersTable TO 'AccountManager'@'localhost';
 
-REVOKE SELECT, INSERT, DROP ON studentsdb.usersTable FROM 'AccountManager'@'localhost';
+#REVOKE SELECT, INSERT, DROP ON studentsdb.usersTable FROM 'AccountManager'@'localhost';
+#Apparently this was what was giving me so much trouble, all I had to do was uncomment it and retain privileges on studentsdb.usersTable
 
 GRANT CREATE USER ON *.* TO 'AccountManager'@'localhost'; 
 #Users can only be granted CREATE USER permission on a global level, not per-db nor per-table
