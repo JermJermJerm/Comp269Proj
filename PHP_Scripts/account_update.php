@@ -1,23 +1,11 @@
 <?php 
     /*
-	#Connect to database -> validate input -> redirect appropriately
-        require('AccountManager.php');
 	
-	#$missingFields = array();
-     */
-        $dsn = 'mysql:host=localhost;dbname=studentsdb';
-        $dbu = 'root'; #Replace these with AccountManager in the future
-        $dbp = ''; #When we solve the issue of being able to connect as AccountManager
-        try{ 
-            $db = new PDO($dsn, $dbu, $dbp);
+		At this point we should already have an established connection with the db server
+		So, all we really have to do is check for a sessionID if we really wanna be safe
+			and a userID
         
-        } catch (PDOException $err) {
-        
-        //Print out the error code if we can't
-        $error = $err->getMessage();
-        echo "<h2>Error: " . $error . "</h2>"; 
-    }
-        
+    */
 
         
         $userID = 'DEFAULT';
@@ -44,7 +32,6 @@
 
         $CreateUser = $db->prepare($CreateUserQuery);
         $CreateUser->execute();
-		
         #TO DO - try-catch error handling
         
         #2: Create the user's account
@@ -52,12 +39,6 @@
         $CreateAccount = $db->prepare($CreateAccountQuery);
         $CreateAccount->execute();
         
-		#2.1Get the userid by searching for the username, which would be user in this case
-		$userIDquery = "'SELECT userID FROM usersTable WHERE username = " . $user . "'";
-		$getUserID = $db->prepare($userIDquery);
-		$userID = $getUserID->execute();
-		setcookie('userID', $userID);
-		
         #Disconnect from the accountmanager mysql user
         $db=NULL;
         
@@ -73,7 +54,8 @@
         }
         
         #: Redirect
-        header("Location: http://localhost/Comp269Proj/Settings.php");
+        header("Location: http://localhost/Comp269Proj/Settings.html");
+        die();
         
         /*
             previous requires / includes as redirect experiments

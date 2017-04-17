@@ -1,3 +1,7 @@
+/*
+	TODO: Set userIDs, usernames, and email addresses to be unique
+*/
+
 DROP DATABASE IF EXISTS studentsDB;
 CREATE DATABASE studentsDB;
 USE studentsDB;

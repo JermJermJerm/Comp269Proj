@@ -1,9 +1,9 @@
 <?php 
-	if($__SESSION['userID'] == NULL){
+	if($_COOKIE['userID'] == NULL){
 		echo('<h1> No UserID detected </h1>');
 	}
-	else if ($__SESSION['userID'] != NULL){
-		echo('<h1> stored userID is ' . $__SESSION['userID'] . '</h1>');
+	else if ($_COOKIE['userID'] != NULL){
+		echo('<h1> stored userID is ' . $_COOKIE['userID'] . '</h1>');
 	}
 ?>
 
@@ -25,7 +25,7 @@
 		<li><a href="#">Settings</a></li>
 		<li><a href="#">Projects</a></li>
 		<li><a href="#">Teams</a></li>
-		<li><a href="#" >Sign out</a></li>
+		<li><a href="./PHP_Scripts/signout.php" >Sign out</a></li>
 	</ul>
 	<br> 
 
