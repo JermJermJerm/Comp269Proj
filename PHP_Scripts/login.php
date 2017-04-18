@@ -32,7 +32,7 @@
 			echo('<h1>Username or Password not matched</h1>');
 		} else if ($pass == $PWfromDB[0]){
 			
-			setcookie('username', $user);
+			setcookie("username", $user);
 			header("Location: http://localhost/Comp269Proj/Settings.php"); #redirect
 		}
       
