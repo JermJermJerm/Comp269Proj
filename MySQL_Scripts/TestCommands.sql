@@ -13,3 +13,5 @@ INSERT INTO userstable VALUES ('DEFAULT', 'first', 'middle', 'last', 'pw', 'e', 
 UPDATE userstable SET useremail='aaaaa' WHERE userID=3;
 
 #DROP USER IF EXISTS ' '@'localhost';
+
+SELECT userPW FROM userstable WHERE userName='U';

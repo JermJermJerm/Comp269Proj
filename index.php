@@ -14,7 +14,7 @@
 
 <head>
 	<!-- CSS and JS -->
-	<link href="main.css" type="text/css" rel="stylesheet"/>
+	<link href="styles.php" type="text/css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -39,12 +39,12 @@
 			-->
 			
 			<h3>Log in</h3>
-			<form action="login.php" method="post" id="logInForm">
+			<form action="PHP_Scripts/login.php" method="post" id="logInForm">
 				<label>Username</label>
-				<input type="text" id="userName" maxlength="20" placeholder="Username">
+				<input type="text" id="userName" name="username" maxlength="20" placeholder="Username">
 				
-				<label>Password<span class="required">*</span>:</label>
-				<input type="text" id="password" maxlength="32" placeholder="Password">
+				<label>Password</label>
+				<input type="text" id="password" name="password" maxlength="32" placeholder="Password">
 				
 				<input type="Submit" value="Log in" class="submitButton">
 			</form>

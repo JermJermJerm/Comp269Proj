@@ -1,14 +1,32 @@
 <?php 
     /*
+	#Connect to database -> validate input -> redirect appropriately
+        require('AccountManager.php');
 	
-		At this point we should already have an established connection with the db server
-		So, all we really have to do is check for a sessionID if we really wanna be safe
-			and a userID
+	#$missingFields = array();
+     */
+        $dsn = 'mysql:host=localhost;dbname=studentsdb';
+        $dbu = 'root'; #Replace these with AccountManager in the future
+        $dbp = ''; #When we solve the issue of being able to connect as AccountManager
+        try{ 
+            $db = new PDO($dsn, $dbu, $dbp);
         
-    */
-
+        } catch (PDOException $err) {
         
-        $userID = 'DEFAULT';
+        //Print out the error code if we can't
+        $error = $err->getMessage();
+        echo "<h2>Error: " . $error . "</h2>"; 
+    }
+        
+	#STEPS: 
+	# 1: Make sure no fields are null, else redirect with err message
+	# 2: Make sure oldPW1 and oldPW2 match
+	# 3: Make sure oldPW1, oldPW2, and userPW match
+	# 4: try to update table fields - report success
+	# 5: catch error if it does not - report failure
+	# 6: return to settings.php
+		
+		
 	$fName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
 	$mName = filter_input(INPUT_POST, 'middleName', FILTER_SANITIZE_SPECIAL_CHARS);
 	$lName = filter_input(INPUT_POST, 'lastName', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -32,6 +50,7 @@
 
         $CreateUser = $db->prepare($CreateUserQuery);
         $CreateUser->execute();
+		
         #TO DO - try-catch error handling
         
         #2: Create the user's account
@@ -39,6 +58,12 @@
         $CreateAccount = $db->prepare($CreateAccountQuery);
         $CreateAccount->execute();
         
+		#2.1Get the userid by searching for the username, which would be user in this case
+		$userIDquery = "'SELECT userID FROM usersTable WHERE username = " . $user . "'";
+		$getUserID = $db->prepare($userIDquery);
+		$userID = $getUserID->execute();
+		setcookie('userID', $userID);
+		
         #Disconnect from the accountmanager mysql user
         $db=NULL;
         
@@ -54,11 +79,3 @@
         }
         
         #: Redirect
-        header("Location: http://localhost/Comp269Proj/Settings.html");
-        die();
-        
-        /*
-            previous requires / includes as redirect experiments
-            require('/../Project.html');
-            require('/../main.css');
-        */
