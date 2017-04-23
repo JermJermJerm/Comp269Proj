@@ -19,10 +19,6 @@
 		}
 	/* CONNECT TO DB */
 	
-	/* LIST ALL COOKIES */
-	echo('<h2>all cookies:</h2>');
-	print_r($_COOKIE);
-	/* LIST ALL COOKIES */
 	
 	/* TODO: Use this block to greet user on login
 	if($_COOKIE['username'] == NULL){
@@ -32,12 +28,14 @@
 		echo('<h1> stored username is ' . $__COOKIE['username'] . '</h1>');
 	} */
 	
+        
 	
 	/* Fetch user details to display in input elements, for updating user details */
 	
 	####### TO DO: MAKE SURE WE ADJUST getUserDetailsQuery TO SEARCH BY USERNAME FROM COOKIE! #######
 	####### TO DO: MAKE SURE WE ADJUST getUserDetailsQuery TO SEARCH BY USERNAME FROM COOKIE! #######
-		$getUserDetailsQuery = "SELECT userFirstName, userMiddleName, userLastName, userPW, userEmail, userName FROM userstable WHERE userName ='this'";
+		$getUserDetailsQuery = "SELECT userFirstName, userMiddleName, userLastName, userPW, userEmail, userName"
+                        . " FROM userstable WHERE userName ='" . $_COOKIE['username'] . "'";
 	####### TO DO: MAKE SURE WE ADJUST getUserDetailsQuery TO SEARCH BY USERNAME FROM COOKIE! #######
 	####### TO DO: MAKE SURE WE ADJUST getUserDetailsQuery TO SEARCH BY USERNAME FROM COOKIE! #######
 	$getUserDetails = $db->prepare($getUserDetailsQuery); #prepare query
@@ -47,7 +45,6 @@
 	echo('<h2>all cookies:</h2>');
 	print_r($userDetails);
 	
-	echo('\n $userDetails[userFirstName] = ' . $userDetails['userFirstName']);
 ?>
 
 
@@ -66,15 +63,15 @@
 	<ul class="navUL">
 		<li><a href="#">Home</a></li>
 		<li><a href="#">Settings</a></li>
-		<li><a href="#">Projects</a></li>
-		<li><a href="#">Teams</a></li>
+		<li><a href="Project">Projects</a></li>
+		<li><a href="Teams.html">Teams</a></li>
 		<li><a href="./PHP_Scripts/signout.php" >Sign out</a></li>
 	</ul>
 	<br> 
 
 	<h1>Settings</h1>
 	
-	<form action="changeSettings.php" method="POST" id="settingsForm">
+	<form action="./PHP_Scripts/changeSettings.php" method="POST" id="settingsForm">
 	
 		<label>First name:</label>
 		<input name="fname" type="text" placeholder="FirstName" 
@@ -119,8 +116,8 @@
 		
 		<br>
 		
-		<label>Username: (Automatically checks for availability) </label>
-		<input type="text" placeholder="UserName" />
+		<label>Username: (Automatically checks for availability - not yet but I want it to) </label>
+		<input name="username" type="text" placeholder="UserName" />
 		
 		<br>
 		

@@ -1,11 +1,6 @@
 <?php
-	
+	#Get rid of all the existing session data and redirect
 	session_destroy();
-	
-	#starting a brand new session will create a new, empty session
-	#destroying that empty session will make sure we are Cleansed
-	session_start();
-	session_destroy();
-	
-	
+	$_SESSION = array();
+        
     header("Location: ./../index.php");

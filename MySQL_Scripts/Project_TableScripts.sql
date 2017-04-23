@@ -20,7 +20,7 @@ CREATE TABLE usersTable (
     userLastName		CHAR(20)		NOT NULL,
     userPW				VARCHAR(32)		NOT NULL,
     userEmail			VARCHAR(32)		NOT NULL,
-    userName			VARCHAR(32)		NOT NULL
+    userName			VARCHAR(32)		NOT NULL UNIQUE
 );
 
 
