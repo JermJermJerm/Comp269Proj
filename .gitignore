@@ -2,3 +2,4 @@ screenshots/*
 /nbproject/private/
 nbproject/project.properties
 nbproject/project.xml
+MySQL_Scripts/TestCommands.sql
