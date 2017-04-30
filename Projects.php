@@ -1,35 +1,37 @@
 <?php 
-		$dsn = "mysql:host=localhost;dbname=studentsdb";
-		$user = 'root';
-		$pass = '';
-		
-		/*
-			PDO / PHP Data object that we provide args in order to connect to the database
-			Will be used to execute commands to get and change records
-		*/
-		Try {
-		$db = new PDO($dsn, $user, $pass);
-		} catch (PDOException $err) {
-			
-			//Print out the error code if we can't
-			$error = $err->getMessage();
-			echo "<h2>Error: " . $error . "</h2>"; 
-		}	
+        $dsn = "mysql:host=localhost;dbname=studentsdb";
+        $user = 'root';
+        $pass = '';
+        Try {
+            $db = new PDO($dsn, $user, $pass);
+        } catch (PDOException $err) {
+            $error = $err->getMessage();
+            echo "<h2>Error: " . $error . "</h2>"; 
+        }	
         
         $username = filter_input(INPUT_COOKIE, 'username');
         $userID = filter_input(INPUT_COOKIE, 'userID');
         
 	echo('<h2>Welcome, ' . $username . ' </h2>');
         
+        #ErrorMessage is set in project_create.php if no project name is supplied.
+        $ProjectErrorMessage = filter_input(INPUT_COOKIE, 'ProjectErrorMessage');
+        
+        if($ProjectErrorMessage != NULL){
+            #If we have an error message specifically for the projects page, we will output and unset it.
+            echo('<h2 class="ErrorMessage">' . $ProjectErrorMessage . '</h2>');
+            setcookie("ProjectErrorMessage", '', time()-86400, '/');
+        }
         
         $getProjectsQuery = "SELECT * FROM projectsTable WHERE projectCreatorID = " . $userID;
         $getProjects = $db->prepare($getProjectsQuery);
         $getProjects->execute();
         $Projects = $getProjects->fetch();
-                    print_r($Projects);
+        
+        #Debug statement to show we're actually getting results
+        #print_r($Projects);
         
 ?>
-
 
 <html>
 
@@ -44,11 +46,11 @@
 	</div>
 	
 	<ul class="navUL">
-		<li><a href="#">Home</a></li>
+		<!--<li><a href="#">Home</a></li>
+		<li><a href="Teams.html">Teams</a></li>-->
 		<li><a href="Settings.php">Settings</a></li>
 		<li><a href="Projects.php">Projects</a></li>
-		<li><a href="Teams.html">Teams</a></li>
-		<li><a href="./PHP_Scripts/signout.php" >Sign out</a></li>
+		<li><a href="./PHP_Scripts/signout.php">Sign out</a></li>
 	</ul>
 	<br> 
 
@@ -57,26 +59,30 @@
 	<div id="projectDiv">
 		<ul class="project">
 			<li>Project name:</li>
-			<li>Project team:</li>
-			<li>Number of team members:</li>
 			<li>Creation date:</li>
 			<li>Deadline:</li>
 		</ul>
 		<ul class="project">
 			<li>Server installation #3498db</li>
-			<li>Night Crew</li>
-			<li>5 team members</li>
 			<li>Creation date: March 6, 2017</li>
 			<li>Deadline: March 11, 2017</li>
 		</ul>
             <?php
-                
+                if($Projects == NULL){
+                    echo('<h2>No projects to view. Create a project below.<h2>');
+                }
                 while($Projects != NULL){
                     
                     echo('<ul class="project">');
                     echo('<li>Project Name: ' . $Projects['projectName'] . '</li>');
                     echo('<li>Project Creator: ' . $username . '</li>');
                     echo('<li>Created on: ' . $Projects['projectCreationDate']);
+                    echo('<form method="POST" action="viewProject" >');
+                    echo('<input type="hidden" value="' . $Projects['projectID'] . '" >');
+                    echo('<li>');
+                    echo('<input type="submit" value="View Project">');
+                    echo('</li>');
+                    echo('</form>');
                     echo('</ul>');
                     #Get a project's details
                     $Projects = $getProjects->fetch();

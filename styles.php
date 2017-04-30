@@ -101,7 +101,7 @@ hr{
 	height: auto;
 	margin: 0;
 	padding: 0;
-	width: 20%;
+	width: 33.33%;
 	text-align: center;
 	background-color: #2980b9;
 	display: block;
@@ -160,4 +160,8 @@ hr{
 }
 .creationForm{
 	padding-bottom: 10px;
+}
+
+.ErrorMessage{
+    color: orange;
 }

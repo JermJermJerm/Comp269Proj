@@ -44,10 +44,10 @@
 	</div>
 	
 	<ul class="navUL">
-		<li><a href="#">Home</a></li>
+		<!--<li><a href="index.php">Home</a></li>
+		<li><a href="Teams.html">Teams</a></li>-->
 		<li><a href="Settings.php">Settings</a></li>
 		<li><a href="Projects.php">Projects</a></li>
-		<li><a href="Teams.html">Teams</a></li>
 		<li><a href="./PHP_Scripts/signout.php" >Sign out</a></li>
 	</ul>
 	<br> 

@@ -47,6 +47,7 @@ CREATE TABLE projectsTable (
     projectCreationDate		DATE			NOT NULL,
     projectDeletionDate		DATE			,
     projectLatestUpdate		DATE			NOT NULL,
+    projectCompleted		bool			NOT NULL,
     projectCompletionDate	DATE			,
     projectDueDate			DATE			
 );

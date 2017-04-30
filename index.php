@@ -1,13 +1,11 @@
 <?php 
-    /*
-        #Create the session and connect to our database
-        #This will allow us to stay connected to the db with one connection
-        session_start(); //Start the session so we can use session variables
-
-        require_once('PHP_Scripts/connectToDB.php'); //Connect to our mysql db
-        We don't need to connect to a database before we have any data to get or set
-    */
-     include('PHP_Scripts/connectToDB.php');
+    
+    #include('PHP_Scripts/connectToDB.php');
+    #Check if someone is logged in, redirect if they are
+    $Username = filter_input(INPUT_COOKIE, 'username');
+    if ($Username != NULL){
+        header("Location: http://localhost/Comp269Proj/Settings.php");
+    }
 ?>
 
 <html>
@@ -69,7 +67,7 @@
                     <label>Password<span class="required">*</span>:</label>
                     <input type="text" id="password" maxlength="32" name="password" placeholder="Password">
                     <br>
-                    <label>Email Address<span class="required">*</span>:</label>
+                    <label>Email Address:</label>
                     <input type="text" id="email" maxlength="32" name="email" placeholder="email@address.com">
                     <br>
                     <input type="submit" value="Create account" class="submitButton">
