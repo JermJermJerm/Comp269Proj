@@ -11,6 +11,7 @@
         
         $username = filter_input(INPUT_COOKIE, 'username');
         $userID = filter_input(INPUT_COOKIE, 'userID');
+        $projectID = filter_input(INPUT_POST, 'ProjectID');
         
 	echo('<h2>Welcome, ' . $username . ' </h2>');
         
@@ -23,13 +24,11 @@
             setcookie("ProjectErrorMessage", '', time()-86400, '/');
         }
         
-        $getProjectsQuery = "SELECT * FROM projectsTable WHERE projectCreatorID = " . $userID;
-        $getProjects = $db->prepare($getProjectsQuery);
-        $getProjects->execute();
-        $Projects = $getProjects->fetch();
+        $getProjectQuery = "SELECT * FROM projectsTable WHERE projectCreatorID = " . $userID;
+        $getProject = $db->prepare($getProjectsQuery);
+        $getProject->execute();
+        $Project = $getProjects->fetch();
         
-        #Debug statement to show we're actually getting results
-        #print_r($Projects);    
 ?>
 
 <html>
@@ -79,7 +78,7 @@
                         echo('<li>Created on: ' . $Projects['projectCreationDate']);
                         
                         echo('<form method="POST" action="viewProject" >');
-                            echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
+                            echo('<input type="hidden" value="' . $Projects['projectID'] . '" >');
                             echo('<li>');
                             echo('<input type="submit" value="View Project" class="viewButton">');
                             echo('</li>');

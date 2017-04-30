@@ -26,7 +26,7 @@
         $getUserDetails->closeCursor();
 	
 	echo('<h2>Welcome, ' . $username . ' </h2>');
-	print_r($userDetails); #debug to see the results that we fetched
+	#print_r($userDetails); #debug to see the results that we fetched
 	
 ?>
 

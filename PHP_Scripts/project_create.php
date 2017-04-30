@@ -18,18 +18,16 @@
     
     #set time
     date_default_timezone_set('America/New_York');
-    $currentTime = date('F jS Y h:i:s A');
+    $date = new DateTime();
+    $currentTime = $date->format('Y-m-d H:i:s');
 
     #Only create the project if the projectName supplied is specified / not null
     if($projectName != NULL ){
 
-
         #insert the project into the projectstable
         $CreateProjectQuery = "INSERT INTO projectstable (projectID, projectName, projectCreatorID, projectCreationDate) "
-            . "VALUES ( 'DEFAULT', " 
-            . "'" . $projectName . "', "
-            . "'" . $userID . "', "
-            . $currentTime . " )"; 
+            . "VALUES ( 'DEFAULT', '" . $projectName . "', '" . $userID . "', '" . $currentTime . "' )"; 
+        
         $CreateProject = $db->prepare($CreateProjectQuery);
         $CreateProject->execute();
         $CreateProject->closeCursor();
@@ -39,7 +37,7 @@
         setcookie("ProjectErrorMessage", $errormsg, time()+86400, '/');
     }
 
-    #: Redirect
+    #Redirect
     header("Location: http://localhost/Comp269Proj/Projects.php");
         
 ?>
