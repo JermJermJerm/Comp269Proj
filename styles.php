@@ -152,7 +152,7 @@ hr{
 	margin: 0 auto;
 	border: 1px #3498db solid;
 	border-radius: 15px;
-	padding-bottom: 
+	#padding-bottom: 
 }
 
 .creationDiv h2{

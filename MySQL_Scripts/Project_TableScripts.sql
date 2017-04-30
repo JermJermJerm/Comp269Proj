@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS tasksTable;
 DROP TABLE IF EXISTS stepsTable;
 
 CREATE TABLE usersTable (
-	userID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	userID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
     userFirstName		CHAR(20)		NOT NULL,
     userMiddleName		CHAR(20)		,
     userLastName		CHAR(20)		NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE usersTable (
 
 
 CREATE TABLE teamsTable (
-	teamID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	teamID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
     teamName			CHAR(20)		NOT NULL,
     teamCreationDate	DATE			NOT NULL,
     teamDeletionDate	DATE			
@@ -41,13 +41,14 @@ CREATE TABLE membershipsTable (
 );
 
 CREATE TABLE projectsTable (
-	projectID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	projectID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
     projectName				CHAR(20)		NOT NULL,
     projectCreatorID		CHAR(20)		, #UsersTable->userid
     projectCreationDate		DATE			NOT NULL,
     projectDeletionDate		DATE			,
     projectLatestUpdate		DATE			NOT NULL,
-    projectCompletionDate	DATE			
+    projectCompletionDate	DATE			,
+    projectDueDate			DATE			
 );
 
 CREATE TABLE tasksTable (

@@ -19,7 +19,6 @@
     }
         
 
-        
         $userID = 'DEFAULT';
 	$fName = filter_input(INPUT_POST, 'firstName', FILTER_SANITIZE_SPECIAL_CHARS);
 	$mName = filter_input(INPUT_POST, 'middleName', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -44,20 +43,25 @@
 
         $CreateUser = $db->prepare($CreateUserQuery);
         $CreateUser->execute();
-		
-        #TO DO - try-catch error handling
+        $CreateUser->closeCursor();
+        setcookie("username", $user, time+3600, "/");
+        
+        /*
+        
+            We won't need these for the sake of the project,
+            We don't use accountmanager for simplicity sake - 
+         * we focus on functionality over security for the time being so we do all table transactions via root
         
         #2: Create the user's account
         $CreateAccountQuery = "CREATE USER '" . $user . "'@'localhost' IDENTIFIED BY '" . $pass . "'";
         $CreateAccount = $db->prepare($CreateAccountQuery);
         $CreateAccount->execute();
         
-		#2.1Get the userid by searching for the username, which would be user in this case
-		$userIDquery = "'SELECT userID FROM usersTable WHERE username = " . $user . "'";
-		$getUserID = $db->prepare($userIDquery);
-		$userID = $getUserID->execute();
-		setcookie('userID', $userID);
-		
+        #2.1Get the userid by searching for the username, which would be user in this case
+        $userIDquery = "'SELECT userID FROM usersTable WHERE username = " . $user . "'";
+        $getUserID = $db->prepare($userIDquery);
+        $userID = $getUserID->execute();
+        setcookie('userID', $userID);	
         #Disconnect from the accountmanager mysql user
         $db=NULL;
         
@@ -71,12 +75,7 @@
             $error = $err->getMessage();
             echo "<h2>Error: " . $error . "</h2>"; 
         }
-        
+        */
         #: Redirect
         header("Location: http://localhost/Comp269Proj/Settings.php");
-        
-        /*
-            previous requires / includes as redirect experiments
-            require('/../Project.html');
-            require('/../main.css');
-        */
+?>

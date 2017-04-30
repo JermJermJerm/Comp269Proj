@@ -21,20 +21,23 @@
 	$pass = filter_input(INPUT_POST, 'password');
         
 	
-        $GetUserQuery = "SELECT userPW FROM userstable WHERE userName='" . $user . "'";
+        $GetUserQuery = "SELECT userPW, userID FROM userstable WHERE userName='" . $user . "'";
         $GetUser = $db->prepare($GetUserQuery);
 	$GetUser->execute();
-        $PWfromDB = $GetUser->fetch();
+        $UserDetails = $GetUser->fetch();
+        $GetUser->closeCursor();
         
 	#echo('<h1> Password from input: ' . $pass . ', password from db: ' . $PWfromDB[0] . '</h1>');
 		
-        if ($pass != $PWfromDB[0]){
-			require("./../index.php"); #redirect
+        if ($pass != $UserDetails['userPW']){
 			echo('<h1>Username or Password not matched</h1>');
-		} else if ($pass == $PWfromDB[0]){
+			header("Location: http://localhost/Comp269Proj/"); #redirect
+		} else if ($pass == $UserDetails['userPW']){
 			
                     
                         setcookie("username", $user, time() + 86400, '/');
+                        setcookie("userID", $UserDetails['userID'], time() + 86400, '/');
+                        
 			header("Location: http://localhost/Comp269Proj/Settings.php"); #redirect
 		}
       
