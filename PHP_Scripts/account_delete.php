@@ -21,8 +21,8 @@
         $deleteAccount->closeCursor();
         #Delete account from userstable / db
         
-        setcookie("username", "", time() - 3600, "/"); #unset username so if other pages are accessed, they won't be usable
-        setcookie("userID", "", time() - 3600, "/"); #unset username so if other pages are accessed, they won't be usable
+        setcookie("username", "", time() - 86400, "/"); #unset username so if other pages are accessed, they won't be usable
+        setcookie("userID", "", time() - 86400, "/"); #unset username so if other pages are accessed, they won't be usable
         
         $_SESSION = array(); #Delete all session variables
         

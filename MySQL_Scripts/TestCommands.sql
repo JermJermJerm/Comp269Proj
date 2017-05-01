@@ -3,6 +3,7 @@ INSERT INTO usersTable VALUES (DEFAULT,'first', 'middle', 'last', 'pw', 'email@a
 SELECT * FROM usersTable;
 #DELETE FROM usersTable WHERE userID != '';
 
+
 SELECT * FROM mysql.user;
 
 INSERT INTO userstable VALUES ('DEFAULT', 'first', 'middle', 'last', 'pw', 'e', 'usern');
