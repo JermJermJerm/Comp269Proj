@@ -1,20 +1,16 @@
 <?php 
-		$dsn = "mysql:host=localhost;dbname=studentsdb";
-		$user = 'root';
-		$pass = '';
-		
-		/*
-			PDO / PHP Data object that we provide args in order to connect to the database
-			Will be used to execute commands to get and change records
-		*/
-		Try {
-		$db = new PDO($dsn, $user, $pass);
-		} catch (PDOException $err) {
-			
-			//Print out the error code if we can't
-			$error = $err->getMessage();
-			echo "<h2>Error: " . $error . "</h2>"; 
-		}	
+        $dsn = "mysql:host=localhost;dbname=studentsdb";
+        $user = 'root';
+        $pass = '';
+
+        Try {
+            $db = new PDO($dsn, $user, $pass);
+        } catch (PDOException $err) {
+
+            //Print out the error code if we can't
+            $error = $err->getMessage();
+            echo ("<h2>Error: " . $error . "</h2>"); 
+        }	
         
         $username = filter_input(INPUT_COOKIE, 'username');
 	/* Fetch user details to display in input elements, for updating user details */

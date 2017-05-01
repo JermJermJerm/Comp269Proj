@@ -6,6 +6,13 @@
     if ($Username != NULL){
         header("Location: http://localhost/Comp269Proj/Settings.php");
     }
+    $loginError = filter_input(INPUT_COOKIE, 'loginErrMsg');
+    if($loginError != NULL){
+        #output error message if it exists, then unset it
+        echo('<h2>' . $loginError . '</h2>');
+        setcookie('loginErrMsg', '', time()-86400, '/');
+    }
+    
 ?>
 
 <html>

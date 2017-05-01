@@ -19,11 +19,12 @@ CREATE TABLE usersTable (
     userMiddleName		CHAR(20)		,
     userLastName		CHAR(20)		NOT NULL,
     userPW				VARCHAR(32)		NOT NULL,
-    userEmail			VARCHAR(32)		NOT NULL,
+    userEmail			VARCHAR(32)		,
     userName			VARCHAR(32)		NOT NULL UNIQUE
 );
 
 
+/*
 CREATE TABLE teamsTable (
 	teamID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
     teamName			CHAR(20)		NOT NULL,
@@ -31,14 +32,10 @@ CREATE TABLE teamsTable (
     teamDeletionDate	DATE			
 );
 
-/*
-	MembershipsTable, literally just teamid | userid to match users and teams, instead of per-team tables
-    purpose: see which users belong to a team, or which teams a particular user belongs to
-*/
 CREATE TABLE membershipsTable (
 	teamID		INT(4) PRIMARY KEY NOT NULL,
     userID		INT(4) NOT NULL
-);
+);*/
 
 CREATE TABLE projectsTable (
 	projectID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
@@ -46,7 +43,7 @@ CREATE TABLE projectsTable (
     projectCreatorID		CHAR(20)		, #UsersTable->userid
     projectCreationDate		DATE			NOT NULL,
     projectDeletionDate		DATE			,
-    projectLatestUpdate		DATE			NOT NULL,
+    projectLatestUpdate		DATE			,
     projectCompleted		bool			NOT NULL,
     projectCompletionDate	DATE			,
     projectDueDate			DATE			
@@ -58,11 +55,11 @@ CREATE TABLE tasksTable (
     taskCreator				CHAR(20)		,
     taskCreationDate		DATE			NOT NULL,
     taskDeletionDate		DATE			,
-    taskLatestUpdate		DATE			NOT NULL,
+    taskLatestUpdate		DATE			,
     taskCompletionDate		DATE			,
     parentProjectID			VARCHAR(20)		NOT NULL
 );
-
+/*
 CREATE TABLE stepsTable (
 	stepID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
     stepName				CHAR(20)		NOT NULL,
@@ -72,4 +69,4 @@ CREATE TABLE stepsTable (
     stepLatestUpdate		DATE			NOT NULL,
     stepCompletionDate		DATE			,
     parentTaskID			VARCHAR(20)		NOT NULL
-);
+);*/

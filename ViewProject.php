@@ -12,22 +12,39 @@
         $username = filter_input(INPUT_COOKIE, 'username');
         $userID = filter_input(INPUT_COOKIE, 'userID');
         $projectID = filter_input(INPUT_POST, 'ProjectID');
+        if($projectID!=NULL){
+            
+            #this cookie will only get set if projectID was passed via POST
+            #we won't need to set this again after redirects if it's still a cookie
+            setcookie("ViewingProjectID", $projectID, time()+3600, '/');
+        } else if ($projectID==NULL){
+            #We're redundant with this because the rest of the page uses $projectID rather than the cookie value
+            #so we just access the cookie value by setting it as a variable
+            $projectID = filter_input(INPUT_COOKIE, 'ViewingProjectID');
+        }
+        $taskErrMsg = filter_input(INPUT_COOKIE, 'NewTaskError');
+        
         
 	echo('<h2>Welcome, ' . $username . ' </h2>');
         
-        #ErrorMessage is set in project_create.php if no project name is supplied.
-        $ProjectErrorMessage = filter_input(INPUT_COOKIE, 'ProjectErrorMessage');
-        
-        if($ProjectErrorMessage != NULL){
+        if($taskErrMsg != NULL){
             #If we have an error message specifically for the projects page, we will output and unset it.
-            echo('<h2 class="ErrorMessage">' . $ProjectErrorMessage . '</h2>');
-            setcookie("ProjectErrorMessage", '', time()-86400, '/');
+            echo('<h2 class="ErrorMessage">' . $taskErrMsg . '</h2>');
+            setcookie("NewTaskError", '', time()-86400, '/');
         }
         
-        $getProjectQuery = "SELECT * FROM projectsTable WHERE projectCreatorID = " . $userID;
-        $getProject = $db->prepare($getProjectsQuery);
+        $getProjectQuery = "SELECT * FROM projectsTable WHERE projectID = '" . $projectID . "'";
+        $getProject = $db->prepare($getProjectQuery);
         $getProject->execute();
-        $Project = $getProjects->fetch();
+        $Project = $getProject->fetch();
+        $getProject->closeCursor();
+        
+        $getTasksQuery = "SELECT * FROM taskstable WHERE parentProjectID = '" . $projectID . "'";
+        $getTasks = $db->prepare($getTasksQuery);
+        $getTasks->execute();
+        $Tasks = $getTasks->fetch();
+        
+        #$getTasksQuery = "SELECT * FROM tasks ";
         
 ?>
 
@@ -44,67 +61,40 @@
 	</div>
 	
 	<ul class="navUL">
-		<!--<li><a href="#">Home</a></li>
-		<li><a href="Teams.html">Teams</a></li>-->
 		<li><a href="Settings.php">Settings</a></li>
 		<li><a href="Projects.php">Projects</a></li>
 		<li><a href="./PHP_Scripts/signout.php">Sign out</a></li>
 	</ul>
 	<br> 
 
-	<h1>Projects</h1>
+	<h1>Project: <?php echo($Project['projectName']); ?> </h1>
 	
 	<div id="projectDiv">
-		<ul class="project">
-			<li>Project name:</li>
-			<li>Creation date:</li>
-			<li>Deadline:</li>
-		</ul>
-		<ul class="project">
-			<li>Server installation #3498db</li>
-			<li>Creation date: March 6, 2017</li>
-			<li>Deadline: March 11, 2017</li>
-		</ul>
-            <?php
-                if($Projects == NULL){
-                    echo('<h2>No projects to view. Create a project below.<h2>');
-                }
-                while($Projects != NULL){
-                    
-                    echo('<ul class="project">');
-                    
-                        echo('<li>Project Name: ' . $Projects['projectName'] . '</li>');
-                        echo('<li>Project Creator: ' . $username . '</li>');
-                        echo('<li>Created on: ' . $Projects['projectCreationDate']);
-                        
-                        echo('<form method="POST" action="viewProject" >');
-                            echo('<input type="hidden" value="' . $Projects['projectID'] . '" >');
-                            echo('<li>');
-                            echo('<input type="submit" value="View Project" class="viewButton">');
-                            echo('</li>');
-                        echo('</form>');
-                    echo('</ul>');
-                    
-                    #Next Row
-                    $Projects = $getProjects->fetch();
-                }
-                $getProjects->closeCursor();
-            ?>
-                
             
-		
+            
+            
+            <?php 
+                #Existing Task goes here
+                echo('<h3>Tasks</h3>');
+                echo('<ul id="tasksUL">'); #start of tasksUL
+                    while($Tasks != NULL){
+                        echo('<li>Task Name: ' . $Tasks['taskName'] . '</li>' );
+                        echo('<li>Task ID: ' . $Tasks['taskID'] . '</li>');
+                        $Tasks=$getTasks->fetch();
+                    }
+                    $getTasks->closeCursor();
+                
+                echo('</ul>'); #end of tasksUL
+
+                #Form for adding a new task
+                echo('<form method="POST" action="./PHP_Scripts/task_create.php" class="creationForm">');
+                echo('<input type="hidden" value="' . $projectID . '" name="projectID">');
+                echo('<input type="text" name="newTaskName" placeholder="New Task Name Here">');
+                echo('<input type="submit" value="Create New Task">');
+                echo('</form>');
+            ?>
+            
 	</div> <!-- End of Projects container-->
-	
-	<div class="creationDiv">
-		<h2>New Project:</h2>
-		<form method="POST" action="PHP_Scripts/project_create.php" class="creationForm">
-			<label>Project Name:</label>
-			<input type="text" placeholder="Project Name" name="ProjectName">
-			
-			<input type="submit" value="Create Project">
-		</form>
-	</div> <!-- End of Projects container-->
-	
 
 </body>
 

@@ -12,6 +12,9 @@
         $username = filter_input(INPUT_COOKIE, 'username');
         $userID = filter_input(INPUT_COOKIE, 'userID');
         
+        #unset this cookie because we'll set it again later when we click on another project to view
+        setcookie("ViewingProjectID", '', time()-86400, '/');
+        
 	echo('<h2>Welcome, ' . $username . ' </h2>');
         
         #ErrorMessage is set in project_create.php if no project name is supplied.
@@ -78,11 +81,11 @@
                         echo('<li>Project Creator: ' . $username . '</li>');
                         echo('<li>Created on: ' . $Projects['projectCreationDate']);
                         
-                        echo('<form method="POST" action="viewProject" >');
-                            echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
-                            echo('<li>');
-                            echo('<input type="submit" value="View Project" class="viewButton">');
-                            echo('</li>');
+                        echo('<form method="POST" action="ViewProject.php" >');
+                            echo('<input type="text" value="' . $Projects['projectID'] . '" name="ProjectID">');
+                            #echo('<li>');
+                            echo('<input type="submit" value="View Project">');
+                            #echo('</li>');
                         echo('</form>');
                     echo('</ul>');
                     
