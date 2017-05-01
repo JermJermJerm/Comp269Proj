@@ -13,7 +13,7 @@ UPDATE userstable SET userPW = 'passing' WHERE username='U';
 SELECT userPW FROM userstable WHERE userName='U';
 
 SELECT * FROM projectstable;
-DELETE FROM projectstable WHERE projectID='3';
+DELETE FROM projectstable WHERE projectID='1';
 
 SELECT * FROM taskstable;
 INSERT INTO taskstable (taskID, taskName, taskCreator, taskCreationDate, parentProjectID) 
