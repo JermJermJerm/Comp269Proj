@@ -76,6 +76,7 @@
 
         <?php 
             #Existing Task goes here
+            #TO-DO: another invisible form for marking tasks as in/complete and a php file for it 
             echo('<h3>Tasks</h3>');
             echo('<ul id="tasksUL">'); #start of tasksUL
                 while($Tasks != NULL){
