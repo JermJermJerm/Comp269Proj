@@ -12,7 +12,7 @@
 
     $newTaskName = filter_input(INPUT_POST, 'newTaskName');
     $userID = filter_input(INPUT_COOKIE, 'userID');
-    $projectID = filter_input(INPUT_POST, 'ProjectID');
+    $projectID = filter_input(INPUT_COOKIE, 'ViewingProjectID');
     
     #set time
     date_default_timezone_set('America/New_York');
@@ -20,15 +20,15 @@
     $currentTime = $date->format('Y-m-d H:i:s');
 
     #Only create the project if the projectName supplied is specified / not null
-    if(newTaskName != NULL ){
+    if($newTaskName != NULL ){
 
         #insert the project into the projectstable
         $CreateTaskQuery = "INSERT INTO taskstable (taskID, taskName, taskCreator, taskCreationDate, parentProjectID) "
-            . "VALUES ( DEFAULT, '" . $newTaskName . "', '" . $userID . "', '" . $currentTime . "', '" . $projectID . "')"; 
+            . "VALUES ( 'DEFAULT', '" . $newTaskName . "', '" . $userID . "', '" . $currentTime . "', '" . $projectID . "')"; 
         
-        $CreateProject = $db->prepare($CreateProjectQuery);
-        $CreateProject->execute();
-        $CreateProject->closeCursor();
+        $CreateTask = $db->prepare($CreateTaskQuery);
+        $CreateTask->execute();
+        $CreateTask->closeCursor();
 
     } else {
         $errormsg = "No Task Name Specified.";

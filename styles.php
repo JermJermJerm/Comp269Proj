@@ -117,15 +117,21 @@ hr{
 
 /*Styles for the Projects and Teams webpages, they're just lists'*/
 #projectDiv, #teamsDiv{
-	width: 500px;
-	display: block;
-	margin: 0 auto;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    border: 1px white solid;
 }
 .project, .team{
-	width: 450px;
+	width: 100%;
+        list-style: none;
 	/*border: 1px #2ecc71 solid;*/
 	background-color: #2980b9;
-	padding: auto 10px;
+	padding-left: 0;
+}
+
+.project li{
+    padding-left: 25px;
 }
 
 .team{
@@ -164,4 +170,26 @@ hr{
 
 .ErrorMessage{
     color: orange;
+}
+
+#tasksUL{
+    list-style: none;
+    padding-left: 0;
+}
+
+#tasksUL li form{
+    height: 21px;
+}
+
+.task{
+    width: 100%;
+    height: 75px;
+    font-size: 20px;
+    color: #ecf0f1;
+    
+    background-color: #2980b9;
+    margin: 5px auto;
+}
+.task li{
+    padding-left: 25px;
 }

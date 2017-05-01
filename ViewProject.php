@@ -79,8 +79,20 @@
             echo('<h3>Tasks</h3>');
             echo('<ul id="tasksUL">'); #start of tasksUL
                 while($Tasks != NULL){
-                    echo('<li>Task Name: ' . $Tasks['taskName'] . '</li>' );
-                    echo('<li>Task ID: ' . $Tasks['taskID'] . '</li>');
+                    echo('<div class="task">');
+                    
+                        echo('<li>Task Name: ' . $Tasks['taskName'] . '</li>' );
+                        #echo('<li>Task ID: ' . $Tasks['taskID'] . '</li>');
+                        echo('<li>');
+                            #Invisible form for deleting each task
+                            echo('<form method="POST" action="./PHP_Scripts/task_delete.php">');
+                            echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
+                            echo('<input type="submit" value="Delete Task">');  
+                            echo('</form>');
+                        echo('</li>');
+                    
+                    echo('</div>');
+                    
                     $Tasks=$getTasks->fetch();
                 }
                 $getTasks->closeCursor();
