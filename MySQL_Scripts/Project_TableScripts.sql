@@ -1,17 +1,14 @@
-/*
-	TODO: Set userIDs, usernames, and email addresses to be unique
-*/
 
 DROP DATABASE IF EXISTS studentsDB;
 CREATE DATABASE studentsDB;
 USE studentsDB;
 
 DROP TABLE IF EXISTS usersTable;
-DROP TABLE IF EXISTS teamsTable;
-DROP TABLE IF EXISTS membershipsTable;
+#DROP TABLE IF EXISTS teamsTable;
+#DROP TABLE IF EXISTS membershipsTable;
 DROP TABLE IF EXISTS projectsTable;
 DROP TABLE IF EXISTS tasksTable;
-DROP TABLE IF EXISTS stepsTable;
+#DROP TABLE IF EXISTS stepsTable;
 
 CREATE TABLE usersTable (
 	userID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
