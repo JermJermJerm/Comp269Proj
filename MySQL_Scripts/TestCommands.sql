@@ -16,5 +16,5 @@ SELECT * FROM projectstable;
 DELETE FROM projectstable WHERE projectID='1';
 
 SELECT * FROM taskstable;
-INSERT INTO taskstable (taskID, taskName, taskCreator, taskCreationDate, parentProjectID) 
-	VALUES (DEFAULT, 'Task1', '2', NOW(), 4 );
+
+#INSERT INTO taskstable (taskID, taskName, taskCreator, taskCreationDate, parentProjectID) 	VALUES (DEFAULT, 'Task1', '2', NOW(), 4 );

@@ -52,7 +52,6 @@
         $GetUserID->closeCursor();
         
         setcookie("username", $user, time()+86400, "/");
-        setcookie("userID", $UserID, time()+86400, "/");
        
         # Redirect
         header("Location: http://localhost/Comp269Proj/Settings.php");

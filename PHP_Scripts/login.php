@@ -36,7 +36,6 @@
                 } else if ($pass == $UserDetails['userPW']){
 
                     setcookie("username", $user, time() + 86400, '/');
-                    setcookie("userID", $UserDetails['userID'], time() + 86400, '/');
 
                     header("Location: http://localhost/Comp269Proj/Settings.php"); #redirect
                 }

@@ -80,17 +80,39 @@
             echo('<h3>Tasks</h3>');
             echo('<ul id="tasksUL">'); #start of tasksUL
                 while($Tasks != NULL){
-                    echo('<div class="task">');
                     
-                        echo('<li>Task Name: ' . $Tasks['taskName'] . '</li>' );
-                        #echo('<li>Task ID: ' . $Tasks['taskID'] . '</li>');
-                        echo('<li>');
-                            #Invisible form for deleting each task
-                            echo('<form method="POST" action="./PHP_Scripts/task_delete.php">');
-                            echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
-                            echo('<input type="submit" value="Delete Task">');  
-                            echo('</form>');
-                        echo('</li>');
+                #Differentiate complete vs incomplete tasks
+                if($Tasks['taskCompleted']==1){
+                    echo('<div class="task complete">');
+                } else {
+                    echo('<div class="task incomplete">');
+                }
+                
+                    echo('<li>' . $Tasks['taskName'] . '</li>' );
+                    #echo('<li>Task ID: ' . $Tasks['taskID'] . '</li>');
+                            
+                    #Invisible form for marking tasks as in/complete 
+                    echo('<li>');
+                        echo('<form method="POST" action="./PHP_Scripts/task_mark.php">');
+                        echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
+                    
+                    if($Tasks['taskCompleted']==1){
+                        echo('<input type="hidden" value="0" name="action">');
+                        echo('<input type="submit" value="Mark task as Incomplete">'); 
+                    } else {
+                        echo('<input type="hidden" value="1" name="action">');
+                        echo('<input type="submit" value="Mark task as Complete">');  
+                    }
+                        echo('</form>');
+                    echo('</li>');   
+                        
+                    #Invisible form for deleting each task
+                    echo('<li>');
+                        echo('<form method="POST" action="./PHP_Scripts/task_delete.php">');
+                        echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
+                        echo('<input type="submit" value="Delete Task">');  
+                        echo('</form>');
+                    echo('</li>');
                     
                     echo('</div>');
                     

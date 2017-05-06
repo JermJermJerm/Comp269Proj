@@ -51,11 +51,13 @@ CREATE TABLE tasksTable (
     taskName				CHAR(20)		NOT NULL,
     taskCreator				CHAR(20)		,
     taskCreationDate		DATE			NOT NULL,
-    taskDeletionDate		DATE			,
-    taskLatestUpdate		DATE			,
+    #taskCompleted			BOOL			NOT NULL,
     taskCompletionDate		DATE			,
     parentProjectID			VARCHAR(20)		NOT NULL
 );
+
+ALTER TABLE tasksTable ADD COLUMN taskCompleted BOOL DEFAULT FALSE;
+
 /*
 CREATE TABLE stepsTable (
 	stepID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,

@@ -187,9 +187,17 @@ hr{
     font-size: 20px;
     color: #ecf0f1;
     
-    background-color: #2980b9;
+    //#background-color: #2980b9;
     margin: 5px auto;
 }
+
+.task.complete{
+    background-color: green;
+}
+.task.incomplete{
+    background-color: red;
+}
+
 .task li{
     padding-left: 25px;
 }

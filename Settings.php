@@ -14,12 +14,13 @@
         
         $username = filter_input(INPUT_COOKIE, 'username');
 	/* Fetch user details to display in input elements, for updating user details */
-	$getUserDetailsQuery = "SELECT userFirstName, userMiddleName, userLastName, userPW, userEmail, userName"
-                        . " FROM userstable WHERE userName ='" . $username . "'";
+	$getUserDetailsQuery = "SELECT * FROM userstable WHERE userName ='" . $username . "'";
 	$getUserDetails = $db->prepare($getUserDetailsQuery); #prepare query
 	$getUserDetails->execute(); #execute query
 	$userDetails = $getUserDetails->fetch(); #fetch values - will only get 1 row as an array
         $getUserDetails->closeCursor();
+        
+        setcookie("userID", $userDetails['userID'], time()+86400, "/");
 	
 	echo('<h2>Welcome, ' . $username . ' </h2>');
 	#print_r($userDetails); #debug to see the results that we fetched
@@ -73,7 +74,7 @@
             <br>
 
             <label>New password:</label>
-            <input name="newPass" type="text" placeholder="NewPW" />
+            <input name="newPass" type="password" placeholder="NewPW" />
 
             <br>
 
