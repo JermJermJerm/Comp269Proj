@@ -17,7 +17,7 @@ h1, h2, h3{
 }
 
 /*Big, centered block with round corners*/
-#bigContainer{
+.bigContainer{
 	width: 500px;
 	height: 400px;
 	border: 1px #bdc3c7 solid;
@@ -27,7 +27,7 @@ h1, h2, h3{
 }
 
 form{
-	width: 300px;
+	width: 350px;
 	display: block;
 	margin: 0 auto;
 	height: 50px;
@@ -37,8 +37,9 @@ label{
 	display: block;
 	float: left;
 	clear: left;
-	width: 100px;
+	width: 150px;
 	color: #ecf0f1;
+        height: 21px;
 }
 
 input{
@@ -66,11 +67,8 @@ hr{
 
 /*Form on the Settings page*/
 #settingsForm{
-	width: 400px;
-	height: 225px;
-	padding: 25px;
-	border: 1px #bdc3c7 solid;
-	border-radius: 25px;
+	padding-top: 25px;
+        width: 350px;
 }
 
 /*Banners on the top of webpages besides login / account creation*/
@@ -200,4 +198,10 @@ hr{
 
 .task li{
     padding-left: 25px;
+}
+
+.hiddenForm{
+    height: 22px;
+    margin-right: 25px;
+    padding-bottom: 5px;
 }

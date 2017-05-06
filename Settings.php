@@ -49,69 +49,69 @@
 	<br> 
 
 	<h1>Settings</h1>
-	
-	<form action="./PHP_Scripts/changeSettings.php" method="POST" id="settingsForm">
-	
-            <label>First name:</label>
-            <input name="fname" type="text" placeholder="FirstName" 
-                    <?php echo('value="' . $userDetails['userFirstName'] . '"'); ?>
-            />
+        <div class="bigContainer">
+            <form action="./PHP_Scripts/changeSettings.php" method="POST" id="settingsForm">
 
-            <br>
+                <label>First name:</label>
+                <input name="fname" type="text" placeholder="FirstName" 
+                        <?php echo('value="' . $userDetails['userFirstName'] . '"'); ?>
+                />
 
-            <label>Middle name:</label>
-            <input name="midname" type="text" placeholder="MiddleName" 
-                    <?php echo('value="' . $userDetails['userMiddleName'] . '"'); ?>
-            />
+                <br>
 
-            <br>
+                <label>Middle name:</label>
+                <input name="midname" type="text" placeholder="MiddleName" 
+                        <?php echo('value="' . $userDetails['userMiddleName'] . '"'); ?>
+                />
 
-            <label>Last name:</label>
-            <input name="lname" type="text" placeholder="LastName" 
-                    <?php echo('value="' . $userDetails['userLastName'] . '"'); ?>
-            />
+                <br>
 
-            <br>
+                <label>Last name:</label>
+                <input name="lname" type="text" placeholder="LastName" 
+                        <?php echo('value="' . $userDetails['userLastName'] . '"'); ?>
+                />
 
-            <label>New password:</label>
-            <input name="newPass" type="password" placeholder="NewPW" />
+                <br>
 
-            <br>
+                <label>New password:</label>
+                <input name="newPass" type="password" placeholder="NewPW" />
 
-            <label>Old password:</label>
-            <input name="oldPW1" type="password" placeholder="OldPW" />
+                <br>
 
-            <br>
+                <label>Old password:</label>
+                <input name="oldPW1" type="password" placeholder="OldPW" />
 
-            <label>Re-enter old password:</label>
-            <input name="oldPW2" type="password" placeholder="OldPW2" />
+                <br>
 
-            <br>
+                <label>Re-enter old password:</label>
+                <input name="oldPW2" type="password" placeholder="OldPW2" />
 
-            <label>Email:</label>
-            <input name="email" type="text" placeholder="Email" 
-                    <?php echo('value="' . $userDetails['userEmail'] . '"'); ?>
-            />
+                <br>
 
-            <br>
+                <label>Email:</label>
+                <input name="email" type="text" placeholder="Email" 
+                        <?php echo('value="' . $userDetails['userEmail'] . '"'); ?>
+                />
 
-            <label>Username:</label>
-            <input name="username" type="text" placeholder="UserName" 
-                   <?php echo('value="' . $userDetails['userName'] . '"'); ?>
-            />
+                <br>
 
-            <br>
-            <input type="submit" value="Save settings" />
+                <label>Username:</label>
+                <input name="username" type="text" placeholder="UserName" 
+                       <?php echo('value="' . $userDetails['userName'] . '"'); ?>
+                />
 
-            <!--nested, hidden form for deleting user's account-->
+                <br>
+                <input type="submit" value="Save settings" />
 
-	</form>
-        
-        <form method="POST" action="PHP_Scripts/account_delete.php">
-        <input type="hidden" name="username" <?php echo('value="' . $username . '"'); ?> />
-        <input type="submit" value="Delete Account" />
-        </form>
-                
+                <!--nested, hidden form for deleting user's account-->
+
+            </form>
+
+            <form method="POST" action="PHP_Scripts/account_delete.php">
+                <input type="hidden" name="username" <?php echo('value="' . $username . '"'); ?> />
+                <input type="submit" value="Delete Account" />
+            </form>
+        </div>
 </body>
 
 </html>

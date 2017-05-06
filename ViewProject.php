@@ -93,7 +93,7 @@
                             
                     #Invisible form for marking tasks as in/complete 
                     echo('<li>');
-                        echo('<form method="POST" action="./PHP_Scripts/task_mark.php">');
+                        echo('<form method="POST" action="./PHP_Scripts/task_mark.php" class="hiddenForm">');
                         echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
                     
                     if($Tasks['taskCompleted']==1){
@@ -108,7 +108,7 @@
                         
                     #Invisible form for deleting each task
                     echo('<li>');
-                        echo('<form method="POST" action="./PHP_Scripts/task_delete.php">');
+                        echo('<form method="POST" action="./PHP_Scripts/task_delete.php" class="hiddenForm>');
                         echo('<input type="hidden" value="' . $Tasks['taskID'] . '" name="taskID">');
                         echo('<input type="submit" value="Delete Task">');  
                         echo('</form>');

@@ -79,10 +79,10 @@
                     #Fill the list with project information
                     echo('<li>Project Name: ' . $Projects['projectName'] . '</li>');
                     echo('<li>Project Creator: ' . $username . '</li>');
-                    echo('<li>Created on: ' . $Projects['projectCreationDate']);
+                    echo('<li>Created on: ' . $Projects['projectCreationDate'] . '</li>');
 
                     #Invisible form for viewing the project on the ViewProject.php view
-                    echo('<form method="POST" action="ViewProject.php" >');
+                    echo('<form method="POST" action="ViewProject.php" class="hiddenForm" >');
                         echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
                         #echo('<li>');
                         echo('<input type="submit" value="View Project">');
@@ -90,7 +90,7 @@
                     echo('</form>');
                     
                     #Invisible form for deleting the project via project_delete.php
-                    echo('<form method="POST" action="./PHP_Scripts/project_delete.php" >');
+                    echo('<form method="POST" action="./PHP_Scripts/project_delete.php" class="hiddenForm">');
                         echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
                         #echo('<li>');
                         echo('<input type="submit" value="Delete Project">');

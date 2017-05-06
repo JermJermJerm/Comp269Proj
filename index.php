@@ -36,7 +36,7 @@
     <h1 id="dowhatnow">Do What Now?</h1>
     <h2>Log in or create an account</h2>
 
-    <div id="bigContainer">
+    <div class="bigContainer">
 
             <!--
             Error code if there's an error with logging in
