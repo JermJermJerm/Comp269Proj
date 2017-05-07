@@ -49,7 +49,7 @@
 	<br> 
 
 	<h1>Settings</h1>
-        <div class="bigContainer">
+        <div id="settingsContainer">
             <form action="./PHP_Scripts/changeSettings.php" method="POST" id="settingsForm">
 
                 <label>First name:</label>

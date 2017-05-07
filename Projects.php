@@ -59,16 +59,6 @@
     <h1>Projects</h1>
 
     <div id="projectDiv">
-            <ul class="project">
-                    <li>Project name:</li>
-                    <li>Creation date:</li>
-                    <li>Deadline:</li>
-            </ul>
-            <ul class="project">
-                    <li>Server installation #3498db</li>
-                    <li>Creation date: March 6, 2017</li>
-                    <li>Deadline: March 11, 2017</li>
-            </ul>
         <?php
             if($Projects == NULL){
                 echo('<h2>No projects to view. Create a project below.<h2>');

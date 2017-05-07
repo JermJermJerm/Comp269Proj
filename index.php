@@ -23,25 +23,13 @@
 </head>
 
 <body>
-    <!--
-            In the future:
-            Turn this into a PHP file
-            check the session array for a sessionid
-                    if there is an active session, redirect to projects view
-                    if not, do nothing so that the user can create an account or log in
-    -->
 
 
 
     <h1 id="dowhatnow">Do What Now?</h1>
     <h2>Log in or create an account</h2>
 
-    <div class="bigContainer">
-
-            <!--
-            Error code if there's an error with logging in
-            Use JS to check fields-> disable buttons until all fields are valid
-            -->
+    <div id="indexContainer">
 
             <h3>Log in</h3>
             <form action="PHP_Scripts/login.php" method="post" id="logInForm">

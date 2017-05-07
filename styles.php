@@ -17,9 +17,19 @@ h1, h2, h3{
 }
 
 /*Big, centered block with round corners*/
-.bigContainer{
+#indexContainer{
 	width: 500px;
 	height: 400px;
+	border: 1px #bdc3c7 solid;
+	border-radius: 25px;
+	display: block;
+	margin: 0 auto;
+}
+
+
+#settingsContainer{
+        width: 500px;
+	height: 275px;
 	border: 1px #bdc3c7 solid;
 	border-radius: 25px;
 	display: block;
@@ -154,6 +164,7 @@ hr{
 	width: 500px;
 	display: block;
 	margin: 0 auto;
+        margin-top: 10px;
 	border: 1px #3498db solid;
 	border-radius: 15px;
 	#padding-bottom: 
