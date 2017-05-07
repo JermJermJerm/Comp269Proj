@@ -4,11 +4,8 @@ CREATE DATABASE studentsDB;
 USE studentsDB;
 
 DROP TABLE IF EXISTS usersTable;
-#DROP TABLE IF EXISTS teamsTable;
-#DROP TABLE IF EXISTS membershipsTable;
 DROP TABLE IF EXISTS projectsTable;
 DROP TABLE IF EXISTS tasksTable;
-#DROP TABLE IF EXISTS stepsTable;
 
 CREATE TABLE usersTable (
 	userID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
@@ -19,20 +16,6 @@ CREATE TABLE usersTable (
     userEmail			VARCHAR(32)		,
     userName			VARCHAR(32)		NOT NULL UNIQUE
 );
-
-
-/*
-CREATE TABLE teamsTable (
-	teamID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
-    teamName			CHAR(20)		NOT NULL,
-    teamCreationDate	DATE			NOT NULL,
-    teamDeletionDate	DATE			
-);
-
-CREATE TABLE membershipsTable (
-	teamID		INT(4) PRIMARY KEY NOT NULL,
-    userID		INT(4) NOT NULL
-);*/
 
 CREATE TABLE projectsTable (
 	projectID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
@@ -57,15 +40,3 @@ CREATE TABLE tasksTable (
 );
 
 ALTER TABLE tasksTable ADD COLUMN taskCompleted BOOL DEFAULT FALSE;
-
-/*
-CREATE TABLE stepsTable (
-	stepID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    stepName				CHAR(20)		NOT NULL,
-    stepCreator				CHAR(20)		,
-    stepCreationDate		DATE			NOT NULL,
-    stepDeletionDate		DATE			,
-    stepLatestUpdate		DATE			NOT NULL,
-    stepCompletionDate		DATE			,
-    parentTaskID			VARCHAR(20)		NOT NULL
-);*/
