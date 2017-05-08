@@ -60,7 +60,7 @@
                     <input type="text" id="lastName" maxlength="20" name="lastName" placeholder="Last name">
                     <br>
                     <label>Password<span class="required">*</span>:</label>
-                    <input type="text" id="password" maxlength="32" name="password" placeholder="Password">
+                    <input type="password" id="password" maxlength="32" name="password" placeholder="Password">
                     <br>
                     <label>Email Address:</label>
                     <input type="text" id="email" maxlength="32" name="email" placeholder="email@address.com">
