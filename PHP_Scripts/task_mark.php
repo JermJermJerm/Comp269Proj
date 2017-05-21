@@ -1,5 +1,5 @@
 <?php 
-    $dsn = 'mysql:host=localhost;dbname=studentsdb';
+    $dsn = 'mysql:host=localhost;dbname=doWhatNowDB';
     $dbu = 'root'; #Replace these with AccountManager in the future
     $dbp = ''; #When we solve the issue of being able to connect as AccountManager
     try{ 
@@ -36,4 +36,4 @@
     $MarkTask->closeCursor();
 
     #Redirect
-    header("Location: http://localhost/Comp269Proj/ViewProject.php");
+    header("Location: http://localhost/DoWhatNow/ViewProject.php");

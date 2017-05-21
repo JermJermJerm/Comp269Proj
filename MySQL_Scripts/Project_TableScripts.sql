@@ -1,11 +1,12 @@
-
-DROP DATABASE IF EXISTS studentsDB;
-CREATE DATABASE studentsDB;
-USE studentsDB;
+DROP DATABASE IF EXISTS doWhatNowDB;
+CREATE DATABASE doWhatNowDB;
+USE doWhatNowDB;
 
 DROP TABLE IF EXISTS usersTable;
 DROP TABLE IF EXISTS projectsTable;
 DROP TABLE IF EXISTS tasksTable;
+DROP TABLE IF EXISTS teamsTable;
+DROP TABLE IF EXISTS teamMembershipsTable;
 
 CREATE TABLE usersTable (
 	userID				INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
@@ -30,13 +31,25 @@ CREATE TABLE projectsTable (
 );
 
 CREATE TABLE tasksTable (
-	taskID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    taskName				CHAR(20)		NOT NULL,
-    taskCreator				CHAR(20)		,
+	taskID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
+    taskName				VARCHAR(64)		NOT NULL,
+    taskCreator				CHAR(20)		NOT NULL,
     taskCreationDate		DATE			NOT NULL,
-    #taskCompleted			BOOL			NOT NULL,
+    #taskCompleted			BOOL			NOT NULL, this gets added right after so we can set the default of true / false
     taskCompletionDate		DATE			,
     parentProjectID			VARCHAR(20)		NOT NULL
+);
+
+CREATE TABLE teamsTable (
+	teamID					INT				PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE,
+    teamName				CHAR(20)		NOT NULL,
+    teamCreator				CHAR(20)		NOT NULL,
+    teamCreationDate		DATE			NOT NULL
+);
+
+CREATE TABLE teamMembershipsTable ( #Keep track of user<>team relationships
+    userID					INT				,
+    teamID					INT				
 );
 
 ALTER TABLE tasksTable ADD COLUMN taskCompleted BOOL DEFAULT FALSE;

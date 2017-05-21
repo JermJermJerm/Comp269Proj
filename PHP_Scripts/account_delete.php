@@ -1,5 +1,5 @@
 <?php 
-    $dsn = 'mysql:host=localhost;dbname=studentsdb';
+    $dsn = 'mysql:host=localhost;dbname=doWhatNowDB';
     $dbu = 'root';
     $dbp = '';
     try{ 
@@ -26,6 +26,6 @@
         
         $_SESSION = array(); #Delete all session variables
         
-        header("Location: http://localhost/Comp269Proj/"); #redirect
+        header("Location: http://localhost/DoWhatNow/"); #redirect
 	
         

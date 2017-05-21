@@ -3,7 +3,7 @@
 	#Connect to database -> validate input -> redirect appropriately
         require('AccountManager.php');
      */
-    $dsn = 'mysql:host=localhost;dbname=studentsdb';
+    $dsn = 'mysql:host=localhost;dbname=doWhatNowDB';
     $dbu = 'root'; #Replace these with AccountManager in the future
     $dbp = ''; #When we solve the issue of being able to connect as AccountManager
     try{ 
@@ -32,17 +32,17 @@
 		
             if ($pass != $UserDetails['userPW']){
                     setcookie("loginErrMsg", 'Username or Password not matched', time()+3600, '/');
-                    header("Location: http://localhost/Comp269Proj/"); #redirect
+                    header("Location: http://localhost/DoWhatNow/"); #redirect
                 } else if ($pass == $UserDetails['userPW']){
 
                     setcookie("username", $user, time() + 86400, '/');
 
-                    header("Location: http://localhost/Comp269Proj/Settings.php"); #redirect
+                    header("Location: http://localhost/DoWhatNow/Settings.php"); #redirect
                 }
         } else{
             
             setcookie("loginErrMsg", 'No username or password supplied', time()+3600, '/');
             #redirect if no input is supplied.
-            header("Location: http://localhost/Comp269Proj/");
+            header("Location: http://localhost/DoWhatNow/");
         }
         

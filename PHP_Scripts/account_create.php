@@ -5,7 +5,7 @@
 
             #$missingFields = array();
         */
-        $dsn = 'mysql:host=localhost;dbname=studentsdb';
+        $dsn = 'mysql:host=localhost;dbname=doWhatNowDB';
         $dbu = 'root'; #Replace these with AccountManager in the future
         $dbp = ''; #When we solve the issue of being able to connect as AccountManager
         try{ 
@@ -47,7 +47,7 @@
         if($userMissingInput==TRUE){
             setcookie('loginErrMsg', "Missing required field: " . $missingField, time()+3600, "/");
             header("Content-Length: 0"); #tell the server there's nothing else to execute so the redirect happens
-            header("Location: http://localhost/Comp269Proj/index.php");
+            header("Location: http://localhost/DoWhatNow/index.php");
         }
         else { #Only check if a username is available if the user supplies one
             
@@ -61,7 +61,7 @@
                 $errorMsg = 'The username "' . $user . '" is unavailable. Please try another.';
                 setcookie('loginErrMsg', $errorMsg , time()+3600, "/");
                 header("Content-Length: 0"); #tell the server there's nothing else to execute so the redirect happens
-                header("Location: http://localhost/Comp269Proj/index.php");
+                header("Location: http://localhost/DoWhatNow/index.php");
             }
             else{
                 #Only proceed if the user has given us all required input and the username is not taken
@@ -88,7 +88,7 @@
                 setcookie("username", $user, time()+86400, "/");
 
                 # Redirect
-                header("Location: http://localhost/Comp269Proj/Settings.php");
+                header("Location: http://localhost/DoWhatNow/Settings.php");
             }
         }
 ?>

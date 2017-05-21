@@ -1,5 +1,5 @@
 <?php 
-        $dsn = "mysql:host=localhost;dbname=studentsdb";
+        $dsn = "mysql:host=localhost;dbname=doWhatNowDB";
         $user = 'root';
         $pass = '';
 
@@ -44,6 +44,7 @@
 		<li><a href="Teams.html">Teams</a></li>-->
 		<li><a href="Settings.php">Settings</a></li>
 		<li><a href="Projects.php">Projects</a></li>
+		<li><a href="Teams.php">Teams</a></li>
 		<li><a href="./PHP_Scripts/signout.php" >Sign out</a></li>
 	</ul>
 	<br> 

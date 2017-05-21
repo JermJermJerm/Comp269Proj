@@ -4,7 +4,7 @@
         In the future there will be a limited-access account that will access the db
         to create users, delete users, and grant users permissions
     */
-    $dsn = "mysql:host=localhost;dbname=studentsdb";
+    $dsn = "mysql:host=localhost;dbname=doWhatNowDB";
     $user = 'root';
     $pass = '';
 	

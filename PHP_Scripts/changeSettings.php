@@ -5,7 +5,7 @@
 	
 	#$missingFields = array();
      */
-        $dsn = 'mysql:host=localhost;dbname=studentsdb';
+        $dsn = 'mysql:host=localhost;dbname=doWhatNowDB';
         $dbu = 'root'; #Replace these with AccountManager in the future
         $dbp = ''; #When we solve the issue of being able to connect as AccountManager
         try{ 
@@ -77,7 +77,7 @@
             
         } //end of if
             
-        header("Location: http://localhost/Comp269Proj/Settings.php"); #redirect
+        header("Location: http://localhost/DoWhatNow/Settings.php"); #redirect
         
         /*
         $CreateUserQuery = "INSERT INTO usersTable VALUES (" . $userID . ", " .

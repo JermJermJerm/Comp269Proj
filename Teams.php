@@ -13,24 +13,24 @@
     $userID = filter_input(INPUT_COOKIE, 'userID');
 
     #unset this cookie because we'll set it again later when we click on another project to view
-    setcookie("ViewingProjectID", '', time()-86400, '/');
+    #setcookie("ViewingTeamID", '', time()-86400, '/');
 
     echo('<h2>Welcome, ' . $username . ' </h2>');
 
     #ErrorMessage is set in project_create.php if no project name is supplied.
-    $ProjectErrorMessage = filter_input(INPUT_COOKIE, 'ProjectErrorMessage');
+    $TeamErrorMessage = filter_input(INPUT_COOKIE, 'TeamErrorMessage');
 
-    if($ProjectErrorMessage != NULL){
+    if($TeamErrorMessage != NULL){
         #If we have an error message specifically for the projects page, we will output and unset it.
-        echo('<h2 class="ErrorMessage">' . $ProjectErrorMessage . '</h2>');
-        setcookie("ProjectErrorMessage", '', time()-86400, '/');
+        echo('<h2 class="ErrorMessage">' . $TeamErrorMessage . '</h2>');
+        setcookie("TeamErrorMessage", '', time()-86400, '/');
     }
 
-    $getProjectsQuery = "SELECT * FROM projectsTable WHERE projectCreatorID = " . $userID;
-    $getProjects = $db->prepare($getProjectsQuery);
-    $getProjects->execute();
-    $Projects = $getProjects->fetch();
-
+    $getTeamsQuery = "SELECT * FROM teamMembershipsTable WHERE userID = " . $userID;
+    $getTeams = $db->prepare($getTeamsQuery);
+    $getTeams->execute();
+    $Teams = $getTeams->fetch();
+    
     #Debug statement to show we're actually getting results
     #print_r($Projects);    
 ?>
@@ -48,8 +48,6 @@
     </div>
 
     <ul class="navUL">
-            <!--<li><a href="#">Home</a></li>
-            <li><a href="Teams.html">Teams</a></li>-->
             <li><a href="Settings.php">Settings</a></li>
             <li><a href="Projects.php">Projects</a></li>
             <li><a href="Teams.php">Teams</a></li>
@@ -57,24 +55,24 @@
     </ul>
     <br> 
 
-    <h1>Projects</h1>
+    <h1>Teams</h1>
 
     <div id="projectDiv">
         <?php
-            if($Projects == NULL){
-                echo('<h2>No projects to view. Create a project below.<h2>');
+            if($Teams == NULL){
+                echo('<h2>You are not a part of any teams. Create a team below.<h2>');
             }
-            while($Projects != NULL){
+            while($Teams != NULL){
                 #Create a div for each project
                 echo('<ul class="project">');
                     #Fill the list with project information
-                    echo('<li>Project Name: ' . $Projects['projectName'] . '</li>');
+                    echo('<li>Team Name: ' . $Teams['teamName'] . '</li>');
                     echo('<li>Project Creator: ' . $username . '</li>');
-                    echo('<li>Created on: ' . $Projects['projectCreationDate'] . '</li>');
+                    echo('<li>Created on: ' . $Teams['teamCreationDate'] . '</li>');
 
                     #Invisible form for viewing the project on the ViewProject.php view
                     echo('<form method="POST" action="ViewProject.php" class="hiddenForm" >');
-                        echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
+                        echo('<input type="hidden" value="' . $Teams['teamID'] . '" name="ProjectID">');
                         #echo('<li>');
                         echo('<input type="submit" value="View Project">');
                         #echo('</li>');
@@ -82,7 +80,7 @@
                     
                     #Invisible form for deleting the project via project_delete.php
                     echo('<form method="POST" action="./PHP_Scripts/project_delete.php" class="hiddenForm">');
-                        echo('<input type="hidden" value="' . $Projects['projectID'] . '" name="ProjectID">');
+                        echo('<input type="hidden" value="' . $Teams['teamID'] . '" name="ProjectID">');
                         #echo('<li>');
                         echo('<input type="submit" value="Delete Project">');
                         #echo('</li>');
@@ -90,9 +88,9 @@
                 echo('</ul>');
 
                 #Next Row
-                $Projects = $getProjects->fetch();
+                $Teams = $getTeams->fetch();
             }
-            $getProjects->closeCursor();
+            $getTeams ->closeCursor();
         ?>
 
 
@@ -100,12 +98,12 @@
     </div> <!-- End of Projects container-->
 
     <div class="creationDiv">
-        <h2>New Project:</h2>
-        <form method="POST" action="PHP_Scripts/project_create.php" class="creationForm">
-                <label>Project Name:</label>
-                <input type="text" placeholder="Project Name" name="ProjectName">
+        <h2>New Team:</h2>
+        <form method="POST" action="PHP_Scripts/team_create.php" class="creationForm">
+                <label>Team Name:</label>
+                <input type="text" placeholder="Team Name" name="TeamName">
 
-                <input type="submit" value="Create Project">
+                <input type="submit" value="Create Team">
         </form>
     </div> <!-- End of Projects container-->
 
